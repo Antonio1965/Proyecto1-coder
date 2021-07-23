@@ -9,14 +9,15 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
   const [finished, setFinished] = useState(false);
   const handleState = () => setFinished(!finished);
 
-  // Cart
-  const { addToCart, removeFromCart } = useContext(Context);
-  const handleSend = () => {
-    addToCart({ ...item, quantity: count });
-  };
-  const handleRemove = () => {
-    removeFromCart(item);
-  };
+ // Cart
+  // const { addToCart, removeFromCart } = useContext(Context);
+  // const handleSend = () => {
+  //   addToCart({ ...item, quantity: count });
+  // };
+  // const handleRemove = () => {
+  //   removeFromCart(item);
+  // };
+
 
   return (
     <div className="container item-detail">
@@ -25,9 +26,11 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
         <img src={item.image} alt={item.title} />
         <hr></hr>
         <h5>{item.description}</h5>
-        <p>Precio: ${item.price}</p>
+        {/* <p>Precio: ${item.price}</p> */}
         {!finished ? (
           <>
+            <p>Precio: ${item.price}</p>
+            <i>Stock: {item.stock}</i>
             <Counter
               initial={1}
               count={count}
@@ -37,8 +40,8 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
             <button
               className="boton-comprar"
               onClick={() => {
-                // handleState();
-                handleSend();
+                handleState();
+                // handleSend();
               }}
             >
               COMPRAR
@@ -55,7 +58,7 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
               className="modificado"
               onClick={() => {
                 handleState();
-                //  handleRemove();
+                // handleRemove();
               }}
             >
               MODIFICAR

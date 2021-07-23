@@ -22,8 +22,8 @@ export const DataProvider = ({ children }) => {
     let allItemsExceptRemoved = cart.filter(
       (item) => item.id !== receivedItem.id
     );
-
     setCart(allItemsExceptRemoved);
+
   };
 
   const clearCart = () => setCart([]);

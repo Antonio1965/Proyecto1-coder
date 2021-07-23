@@ -12,8 +12,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ItemDetailContainer } from "./components/ItemDetail/ItemDetailContainer";
 import { Counter } from './components/Counter/Counter';
 import { Checkout } from "./components/CheckoutForm/Checkout";
-
-// import { Counter } from "./componentes/Counter/Counter";
+// import { Counter } from "./components/Counter/Counter";
 
 export const App = () => {
   
@@ -32,9 +31,9 @@ export const App = () => {
             <Checkout/>
           </Route>
           <Route  component = {Error404}/>
-          <Route path='/counter'>
+          {/* <Route path='/counter'>
             <Counter/>
-          </Route>
+          </Route> */}
         </Switch>
         <Footer autor="Copyright &copy; -Tsutsumi Jose Antonio - Junio 2021." />
       </Router>
