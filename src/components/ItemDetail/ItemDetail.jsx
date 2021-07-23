@@ -1,26 +1,22 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Context } from '../../Context';
-import { Counter } from '../Counter/Counter';
-
+import { Context } from "../../Context";
+import { Counter } from "../Counter/Counter";
 
 export const ItemDetail = ({ itemToDisplay: item }) => {
- 
-  // const { addToCart, removeFromCart } = useContext(Context);
-
+  // Count
   const [count, setCount] = useState(1);
-
   const [finished, setFinished] = useState(false);
-
   const handleState = () => setFinished(!finished);
 
-  // const handleSend = () => {
-  //   addToCart({ ...item, quantity: count });
-  // };
-
-  // const handleRemove = () => {
-  //   removeFromCart(item);
-  // };
+  // Cart
+  const { addToCart, removeFromCart } = useContext(Context);
+  const handleSend = () => {
+    addToCart({ ...item, quantity: count });
+  };
+  const handleRemove = () => {
+    removeFromCart(item);
+  };
 
   return (
     <div className="container item-detail">
@@ -38,25 +34,31 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
               setCount={setCount}
               stock={item.stock}
             />
-            <button className="boton-comprar" onClick={() => {
-                 handleState();
-                //  handleSend();
-               }}>
+            <button
+              className="boton-comprar"
+              onClick={() => {
+                // handleState();
+                handleSend();
+              }}
+            >
               COMPRAR
             </button>
           </>
         ) : (
           <>
             <Link to="/checkout" onClick={handleState}>
-              <button className='terminado' onClick={handleState}>TERMINAR MI COMPRA</button>
+              <button className="terminado" onClick={handleState}>
+                TERMINAR MI COMPRA
+              </button>
             </Link>
-            <button className='modificado'
+            <button
+              className="modificado"
               onClick={() => {
                 handleState();
-                // handleRemove();
+                //  handleRemove();
               }}
             >
-              Modificar
+              MODIFICAR
             </button>
           </>
         )}

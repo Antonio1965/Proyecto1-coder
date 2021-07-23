@@ -119,11 +119,14 @@
   }
   .item-detail{
   display: flex;
-	//background-color: white;
+	background-color: rgba(14, 36, 133, 0.692);
 	justify-content: center;
 	align-items: center;
-	border-radius: 27px;
-  margin-top: 10vh;
+	border-radius: 27px ;
+  margin:30px 60px;
+  
+  
+  
 
 	img {
 		width: 60%;
