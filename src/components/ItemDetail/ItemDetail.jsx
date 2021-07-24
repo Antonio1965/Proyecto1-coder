@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../Context";
 import { Counter } from "../Counter/Counter";
@@ -10,13 +10,13 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
   const handleState = () => setFinished(!finished);
 
  // Cart
-  // const { addToCart, removeFromCart } = useContext(Context);
-  // const handleSend = () => {
-  //   addToCart({ ...item, quantity: count });
-  // };
-  // const handleRemove = () => {
-  //   removeFromCart(item);
-  // };
+  const { addToCart, removeFromCart } = useContext(Context);
+  const handleSend = () => {
+    addToCart({ ...item, quantity: count });
+  };
+  const handleRemove = () => {
+    removeFromCart(item);
+  };
 
 
   return (
@@ -26,7 +26,6 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
         <img src={item.image} alt={item.title} />
         <hr></hr>
         <h5>{item.description}</h5>
-        {/* <p>Precio: ${item.price}</p> */}
         {!finished ? (
           <>
             <p>Precio: ${item.price}</p>
@@ -41,7 +40,7 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
               className="boton-comprar"
               onClick={() => {
                 handleState();
-                // handleSend();
+                handleSend();
               }}
             >
               COMPRAR
@@ -49,7 +48,7 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
           </>
         ) : (
           <>
-            <Link to="/checkout" onClick={handleState}>
+            <Link to="/cart" onClick={handleState}>
               <button className="terminado" onClick={handleState}>
                 TERMINAR MI COMPRA
               </button>
@@ -58,7 +57,7 @@ export const ItemDetail = ({ itemToDisplay: item }) => {
               className="modificado"
               onClick={() => {
                 handleState();
-                // handleRemove();
+                handleRemove();
               }}
             >
               MODIFICAR
