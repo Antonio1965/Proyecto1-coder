@@ -8,7 +8,7 @@ export const DataProvider = ({ children }) => {
   ///FUNCIONES
 
   const isntInCart = (receivedItem) =>
-    cart.filter((item) => item.id === receivedItem.id).length === 0;
+    cart.filter((item) => item.id === receivedItem.id).length == 0;
 
   const addToCart = (receivedItem) => {
     if (isntInCart(receivedItem)) {
@@ -22,6 +22,7 @@ export const DataProvider = ({ children }) => {
     let allItemsExceptRemoved = cart.filter(
       (item) => item.id !== receivedItem.id
     );
+
     setCart(allItemsExceptRemoved);
 
   };
@@ -30,7 +31,7 @@ export const DataProvider = ({ children }) => {
 
   ///RETURN
   return (
-    <Context.Provider value={{ addToCart, removeFromCart, clearCart }}>
+    <Context.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
       {children}
     </Context.Provider>
   );

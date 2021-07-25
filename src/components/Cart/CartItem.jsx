@@ -1,26 +1,29 @@
 import React from "react";
-// import trash from "../../../assets/trash.svg";
+import { StyledCartItem } from './CartItemStyles';
+import trash from '../../img/trash.jpg';
+
 
 export const CartItem = ({ item, removeFromCart }) => {
   const handleRemoval = () => removeFromCart(item);
 
   return (
-    <div className='cart-item'>
-      <img src={item.img} alt={item.title} />
+    <StyledCartItem>
+      <img src={item.image} alt={item.name} />
       <div>
-        <p>{item.title}</p>
+        <h4>{item.name}</h4>
+        <p>Estrella: {item.rating}</p>
         <span>
           {item.quantity} * ${item.price} = ${item.quantity * item.price}
         </span>
         <br />
-        {/* <img
+        <img
           src={trash}
           onClick={handleRemoval}
           alt="Eliminar elemento"
-          className="trash" */}
-        {/* /> */}
+          className="trash" 
+        />
       </div>
-      </div>
+      </StyledCartItem>
     
   );
 };

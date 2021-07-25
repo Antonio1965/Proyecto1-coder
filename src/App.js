@@ -12,10 +12,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ItemDetailContainer } from "./components/ItemDetail/ItemDetailContainer";
 import { Counter } from "./components/Counter/Counter";
 import { Checkout } from "./components/CheckoutForm/Checkout";
-// import { Cart } from "./components/Cart/Cart";
 import { DataProvider } from "./Context";
 import { Cart } from './components/Cart/Cart';
-// import { Counter } from "./components/Counter/Counter";
 
 export const App = () => {
   return (
@@ -24,9 +22,6 @@ export const App = () => {
         <Router>
           <NavBar title="Drone.Co" />
           <Switch>
-            <Route path="/cart">
-              <Cart />
-            </Route>
             <Route exact path="/">
               <ItemListContainer />
             </Route>
@@ -35,6 +30,9 @@ export const App = () => {
             </Route>
             <Route path="/checkout">
               <Checkout />
+            </Route>
+            <Route path="/cart">
+              <Cart />
             </Route>
             <Route component={Error404} />
             {/* <Route path='/counter'>

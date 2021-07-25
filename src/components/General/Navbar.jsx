@@ -64,8 +64,9 @@ export  function NavBar({title}) {
             </Button>
           </div>
             </Link>
+            <Link to='/cart'>
             <IconButton aria-label="show cart items" color="inherent">
-              <Badge badgeContent={5} color="secondary">
+              <Badge badgeContent={3} color="secondary">
                 <ShoppingCart
                   fontSize="large"
                   className="carro"
@@ -73,6 +74,7 @@ export  function NavBar({title}) {
                 />
               </Badge>
             </IconButton>
+            </Link>
         </Toolbar>
       </AppBar>
     </div>
